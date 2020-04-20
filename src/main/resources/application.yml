@@ -1,0 +1,32 @@
+server:
+  port: 9368
+  servlet:
+    context-path: /dt
+
+# redis
+spring:
+  redis:
+    database: 3
+    host: 127.0.0.1
+    port: 6379
+    seconds: 43200
+    pool:
+      max-active: 1000
+      max-wait: 10000
+      max-idle: 100
+      min-idle: 30
+    timeout: 10000
+    testOnBorrow: true
+    testWhileIdle: true
+
+  # rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username:
+    password:
+    virtual-host: /
+    # 手动ACK 不开启自动ACK模式,目的是防止报错后未正确处理消息丢失 默认 为 none
+    listener:
+      simple:
+        acknowledge-mode: manual
